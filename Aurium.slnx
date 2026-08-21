@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Aurium.Api/Aurium.Api.csproj" />
+    <Project Path="src/Aurium.Application/Aurium.Application.csproj" />
+    <Project Path="src/Aurium.Domain/Aurium.Domain.csproj" />
+    <Project Path="src/Aurium.Infrastructure/Aurium.Infrastructure.csproj" />
+  </Folder>
+</Solution>

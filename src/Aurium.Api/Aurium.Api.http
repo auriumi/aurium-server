@@ -1,0 +1,6 @@
+@Aurium.Api_HostAddress = http://localhost:5246
+
+GET {{Aurium.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
