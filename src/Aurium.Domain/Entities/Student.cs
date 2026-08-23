@@ -17,6 +17,7 @@ public class Student
     public DateTime UpdatedAt { get; private set; }
 
     public StudentDetail? Detail { get; private set; }
+    public StudentSolicitation? Solicitation { get; private set; }
 
     private Student() {} //EF for later
 
@@ -50,7 +51,8 @@ public class Student
             UpdatedAt = DateTime.UtcNow,
         };
     }
-
+    
+    //attach additional details
     public StudentDetail AttachDetails(
         DateTime birthdate,
         string? contactNum = null,
@@ -74,5 +76,26 @@ public class Student
         );
 
         return Detail;
+    }
+
+    //attach solicitations
+    public StudentSolicitation AttachSolicitation(
+        SolicitationType solicitationType,
+        int slot,
+        string? title = null,
+        string? name = null)
+    {
+        if (Solicitation is not null)
+            throw new InvalidOperationException("Student already has a solicitation record.");
+        
+        Solicitation = StudentSolicitation.Create(
+            StudentNumber, 
+            solicitationType,
+            slot,
+            title,
+            name
+        );
+
+        return Solicitation;
     }
 }

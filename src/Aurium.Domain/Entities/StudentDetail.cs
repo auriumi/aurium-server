@@ -51,6 +51,7 @@ public class StudentDetail
         GuardiansTitle = guardiansTitle;
     }
 
+    //dependency scoped
     internal static StudentDetail Create(
         int studentId, 
         DateTime birthdate, 
