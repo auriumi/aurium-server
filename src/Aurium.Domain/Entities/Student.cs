@@ -1,6 +1,6 @@
 namespace Aurium.Domain.Entities;
 
-public enum GraduationTerm { MidYear, EndYear }
+public enum GraduationTerm { MID_YEAR , END_YEAR }
 
 public class Student
 {
@@ -16,6 +16,7 @@ public class Student
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
+    public StudentAuth? Auth { get; private set; }
     public StudentDetail? Detail { get; private set; }
     public StudentSolicitation? Solicitation { get; private set; }
 
@@ -25,7 +26,8 @@ public class Student
         int studentNumber, string firstName,
         string lastName, string? middleName,
         string personalEmail, string? schoolEmail,
-        int graduationYear, GraduationTerm graduationTerm)
+        int graduationYear, GraduationTerm graduationTerm
+    )
     {
         if (string.IsNullOrWhiteSpace(firstName))
             throw new ArgumentException("First name is required");
@@ -65,7 +67,8 @@ public class Student
         string? fathersName = null,
         string? fathersTitle = null,
         string? guardiansName = null,
-        string? guardiansTitle = null)
+        string? guardiansTitle = null
+    )
     {
         if (Detail is not null)
             throw new InvalidOperationException("Student already has a detail record.");
@@ -83,7 +86,8 @@ public class Student
         SolicitationType solicitationType,
         int slot,
         string? title = null,
-        string? name = null)
+        string? name = null
+    )
     {
         if (Solicitation is not null)
             throw new InvalidOperationException("Student already has a solicitation record.");
@@ -97,5 +101,26 @@ public class Student
         );
 
         return Solicitation;
+    }
+
+    public StudentAuth AttachAuth(
+        bool isVerified,
+        bool isNew,
+        string? hashedPassword = null,
+        DateTime? lastLogin = null
+    )
+    {
+        if (Solicitation is not null)
+            throw new InvalidOperationException("Student already has a auth record.");
+        
+        Auth = StudentAuth.Create(
+            StudentNumber,
+            isVerified,
+            isNew,
+            hashedPassword,
+            lastLogin
+        );
+
+        return Auth;
     }
 }
