@@ -1,4 +1,4 @@
-namespace Aurium.Domain.Entities;
+namespace Aurium.Domain.Entities.Student;
 
 public class StudentDetail
 {
@@ -34,7 +34,8 @@ public class StudentDetail
         string? fathersName,
         string? fathersTitle,
         string? guardiansName,
-        string? guardiansTitle)
+        string? guardiansTitle
+    )
     {
         Id = studentId;
         Birthdate = birthdate;
@@ -65,7 +66,8 @@ public class StudentDetail
         string? fathersName,
         string? fathersTitle,
         string? guardiansName,
-        string? guardiansTitle)
+        string? guardiansTitle
+    )
     {
         if (birthdate == default || birthdate > DateTime.UtcNow)
             throw new ArgumentException("A valid birthdate is required");

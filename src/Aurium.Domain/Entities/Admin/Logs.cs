@@ -18,10 +18,10 @@ public class Logs {
         DateTime createdAt
     )
     {
-      AdminId = adminId;
-      Action = action;
-      TargetId = targetId;
-      CreatedAt = createdAt;
+        AdminId = adminId;
+        Action = action;
+        TargetId = targetId;
+        CreatedAt = createdAt;
     }
 
     internal static Logs Create(
@@ -31,14 +31,14 @@ public class Logs {
         DateTime createdAt
     )
     {
-      if (targetId <= 0) 
-          throw new ArgumentException("A valid target ID is required.");
+        if (targetId <= 0) 
+            throw new ArgumentException("A valid target ID is required.");
 
-      return new Logs(
-          adminId,
-          action,
-          targetId,
-          createdAt
-      );
+        return new Logs(
+            adminId,
+            action,
+            targetId,
+            createdAt
+        );
     }
 }

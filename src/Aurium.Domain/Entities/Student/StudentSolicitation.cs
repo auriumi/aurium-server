@@ -1,4 +1,4 @@
-namespace Aurium.Domain.Entities;
+namespace Aurium.Domain.Entities.Student;
 
 public enum SolicitationType { PERSON, COMPANY }
 
@@ -20,7 +20,8 @@ public class StudentSolicitation
         SolicitationType solicitationType,
         int slot,
         string? title,
-        string? name)
+        string? name
+    )
     {
         StudentNumber = studentNumber;
         Type = solicitationType;
@@ -35,7 +36,8 @@ public class StudentSolicitation
         SolicitationType solicitationType,
         int slot,
         string? title,
-        string? name)
+        string? name
+    )
     {
         if (slot <= 0 || slot > MAX_SLOTS)
             throw new ArgumentException("A valid slot number is required.");

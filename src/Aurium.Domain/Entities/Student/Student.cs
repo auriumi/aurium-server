@@ -1,4 +1,4 @@
-namespace Aurium.Domain.Entities;
+namespace Aurium.Domain.Entities.Student;
 
 public enum GraduationTerm { MID_YEAR , END_YEAR }
 

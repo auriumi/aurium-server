@@ -1,4 +1,4 @@
-namespace Aurium.Domain.Entities;
+namespace Aurium.Domain.Entities.Student;
 
 //temp, enums need a better name imo
 public enum StudentStatus { REGISTERED, VERIFIED, BOOKED, ATTENDED }
