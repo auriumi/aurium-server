@@ -85,8 +85,8 @@ public class Student
     public StudentSolicitation AttachSolicitation(
         SolicitationType solicitationType,
         int slot,
-        string? title = null,
-        string? name = null
+        string name,
+        string? title = null
     )
     {
         if (Solicitation is not null)
