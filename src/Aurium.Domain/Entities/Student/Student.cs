@@ -103,24 +103,12 @@ public class Student
         return Solicitation;
     }
 
-    public StudentAuth AttachAuth(
-        bool isVerified,
-        bool isNew,
-        string? hashedPassword = null,
-        DateTime? lastLogin = null
-    )
+    public StudentAuth AttachAuth()
     {
-        if (Solicitation is not null)
-            throw new InvalidOperationException("Student already has a auth record.");
+        if (Auth is not null)
+            throw new InvalidOperationException("Student already has an auth record.");
         
-        Auth = StudentAuth.Create(
-            StudentNumber,
-            isVerified,
-            isNew,
-            hashedPassword,
-            lastLogin
-        );
-
+        Auth = StudentAuth.Create(StudentNumber);
         return Auth;
     }
 }

@@ -29,23 +29,17 @@ public class StudentAuth
         LastLogin = lastLogin;
     }
 
-    internal static StudentAuth Create(
-        int studentNumber,
-        bool isVerified,
-        bool isNew,
-        string? hashedPassword,
-        DateTime? lastLogin
-    )
+    internal static StudentAuth Create(int studentNumber)
     {
         if (studentNumber <= 0) 
             throw new ArgumentException("A valid student number is required.");
         
         return new StudentAuth(
             studentNumber,
-            isVerified,
-            isNew,
-            hashedPassword,
-            lastLogin
+            isVerified: false,
+            isNew: true,
+            hashedPassword: null,
+            lastLogin: null
         );
     }
 }
