@@ -81,28 +81,6 @@ public class Student
         return Detail;
     }
 
-    //attach solicitations
-    public StudentSolicitation AttachSolicitation(
-        SolicitationType solicitationType,
-        int slot,
-        string name,
-        string? title = null
-    )
-    {
-        if (Solicitation is not null)
-            throw new InvalidOperationException("Student already has a solicitation record.");
-        
-        Solicitation = StudentSolicitation.Create(
-            StudentNumber, 
-            solicitationType,
-            slot,
-            title,
-            name
-        );
-
-        return Solicitation;
-    }
-
     public StudentAuth AttachAuth()
     {
         if (Auth is not null)
