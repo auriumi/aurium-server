@@ -1,6 +1,6 @@
 namespace Aurium.Application.Student;
 
-using Aurium.Domain.Entities;
+using Aurium.Domain.Entities.Student;
 using Aurium.Domain.Repositories;
 
 public record SubmitRegistrationRequest(

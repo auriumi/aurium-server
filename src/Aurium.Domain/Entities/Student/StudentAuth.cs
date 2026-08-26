@@ -10,6 +10,7 @@ public class StudentAuth
     public bool IsNew { get; private set; }
 
     public string? HashedPassword { get; private set; }
+    public StudentStatus Status { get; private set ; }
     public DateTime? LastLogin { get; private set; }
 
     private StudentAuth() {}
@@ -19,6 +20,7 @@ public class StudentAuth
         bool isVerified,
         bool isNew,
         string? hashedPassword,
+        StudentStatus status,
         DateTime? lastLogin
     )
     {
@@ -26,6 +28,7 @@ public class StudentAuth
         IsVerified = isVerified;
         IsNew = isNew;
         HashedPassword = hashedPassword;
+        Status = status;
         LastLogin = lastLogin;
     }
 
@@ -39,6 +42,7 @@ public class StudentAuth
             isVerified: false,
             isNew: true,
             hashedPassword: null,
+            status: StudentStatus.REGISTERED,
             lastLogin: null
         );
     }
