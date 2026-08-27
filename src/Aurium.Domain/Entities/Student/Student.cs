@@ -33,7 +33,7 @@ public class Student
             throw new ArgumentException("First name is required");
         if (string.IsNullOrWhiteSpace(lastName))
             throw new ArgumentException("Last name is required");
-        if (string.IsNullOrWhiteSpace(personalEmail) || personalEmail.Contains('@'))
+        if (string.IsNullOrWhiteSpace(personalEmail) || !personalEmail.Contains('@'))
             throw new ArgumentException("A valid personal email is required");
         if (graduationYear < 2020)
             throw new ArgumentException("A valid graduation year is required");

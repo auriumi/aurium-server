@@ -3,6 +3,9 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
+# claude :P
+CLAUDE.md
+
 # dotenv files
 .env
 
