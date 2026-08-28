@@ -22,10 +22,9 @@ public class StudentDetail
     private StudentDetail() {}
 
     private StudentDetail(
-        int studentId, 
         DateTime birthdate, 
-        string? photoUrl,
         string? contactNum,
+        string? photoUrl,
         string? province,
         string? city, 
         string? barangay,
@@ -37,7 +36,6 @@ public class StudentDetail
         string? guardiansTitle
     )
     {
-        Id = studentId;
         Birthdate = birthdate;
         PhotoUrl = photoUrl;
         ContactNum = contactNum;
@@ -54,7 +52,6 @@ public class StudentDetail
 
     //dependency scoped
     internal static StudentDetail Create(
-        int studentId, 
         DateTime birthdate, 
         string? contactNum,
         string? photoUrl,
@@ -69,12 +66,22 @@ public class StudentDetail
         string? guardiansTitle
     )
     {
-        if (birthdate == default || birthdate > DateTime.UtcNow)
+        if (birthdate == default || birthdate >= DateTime.UtcNow)
             throw new ArgumentException("A valid birthdate is required");
         
         return new StudentDetail(
-            studentId, birthdate, contactNum, photoUrl, province, city, barangay,
-            mothersName, mothersTitle, fathersName, fathersTitle, guardiansName, guardiansTitle
+            birthdate, 
+            contactNum, 
+            photoUrl, 
+            province, 
+            city, 
+            barangay,
+            mothersName, 
+            mothersTitle, 
+            fathersName, 
+            fathersTitle, 
+            guardiansName, 
+            guardiansTitle
         );
     }
 }

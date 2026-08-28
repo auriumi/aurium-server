@@ -1,6 +1,7 @@
 namespace Aurium.Domain.Entities.Student;
 
 public enum GraduationTerm { MID_YEAR , END_YEAR }
+public enum Suffix { JUNIOR, SENIOR, SECOND, THIRD, FOURTH, FIFTH }
 
 public class Student
 {
@@ -10,8 +11,8 @@ public class Student
     public string FirstName { get; private set; } = string.Empty;
     public string? MiddleName { get; private set; }
     public string LastName { get; private set; } = string.Empty;
-    public string? Nickname { get; private set; }
-    public string? Suffix { get; private set; }
+    public string Nickname { get; private set; } = string.Empty;
+    public Suffix? Suffix { get; private set; }
     public string PersonalEmail { get; private set; } = string.Empty;
     public string? SchoolEmail { get; private set; }
 
@@ -32,36 +33,60 @@ public class Student
     private Student() {} //EF for later
 
     public static Student Create(
-        int studentNumber, string firstName,
-        string lastName, string? middleName,
-        string personalEmail, string? schoolEmail,
-        int graduationYear, GraduationTerm graduationTerm
+        int studentNumber, 
+        Suffix? suffix,
+        string firstName,
+        string lastName, 
+        string nickname,
+        string? middleName,
+        string personalEmail, 
+        string? schoolEmail,
+        string department,
+        string course,
+        string? major,
+        string? thesisTitle,
+        int graduationYear, 
+        GraduationTerm graduationTerm,
+        DateTime createdAt,
+        DateTime updatedAt
     )
     {
         if (string.IsNullOrWhiteSpace(firstName))
-            throw new ArgumentException("First name is required");
+            throw new ArgumentException("First name is required.");
         if (string.IsNullOrWhiteSpace(lastName))
-            throw new ArgumentException("Last name is required");
+            throw new ArgumentException("Last name is required.");
         if (string.IsNullOrWhiteSpace(personalEmail) || !personalEmail.Contains('@'))
             throw new ArgumentException("A valid personal email is required");
+        if (string.IsNullOrWhiteSpace(nickname))
+            throw new ArgumentException("Nickname is required.");
+        if (string.IsNullOrWhiteSpace(department))
+            throw new ArgumentException("A valid department is required.");
+        if (string.IsNullOrWhiteSpace(course))
+            throw new ArgumentException("A valid course is required.");
         if (graduationYear < 2020)
-            throw new ArgumentException("A valid graduation year is required");
+            throw new ArgumentException("A valid graduation year is required.");
         if (studentNumber <= 0)
-            throw new ArgumentException("A valid student number is required");
+            throw new ArgumentException("A valid student number is required.");
 
 
         return new Student
         {
             StudentNumber = studentNumber,
+            Suffix = suffix,
             FirstName = firstName,
             MiddleName = middleName,
             LastName = lastName,
+            Nickname = nickname,
             PersonalEmail = personalEmail,
             SchoolEmail = schoolEmail,
+            Department = department,
+            Course = course,
+            Major = major,
+            ThesisTitle = thesisTitle,
             GraduationYear = graduationYear,
             GraduationTerm = graduationTerm,
-            CreatedAt = DateTime.UtcNow,
-            UpdatedAt = DateTime.UtcNow,
+            CreatedAt = createdAt,
+            UpdatedAt = updatedAt,
         };
     }
     
@@ -85,7 +110,7 @@ public class Student
             throw new InvalidOperationException("Student already has a detail record.");
         
         Detail = StudentDetail.Create(
-            Id, birthdate, contactNum, photoUrl, province, city, barangay, 
+            birthdate, contactNum, photoUrl, province, city, barangay, 
             mothersName, mothersTitle, fathersName, fathersTitle, guardiansName, guardiansTitle
         );
 
