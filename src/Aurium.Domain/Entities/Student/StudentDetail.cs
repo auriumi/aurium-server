@@ -56,8 +56,8 @@ public class StudentDetail
     internal static StudentDetail Create(
         int studentId, 
         DateTime birthdate, 
-        string? photoUrl,
         string? contactNum,
+        string? photoUrl,
         string? province,
         string? city, 
         string? barangay,
@@ -73,7 +73,7 @@ public class StudentDetail
             throw new ArgumentException("A valid birthdate is required");
         
         return new StudentDetail(
-            studentId, birthdate, photoUrl, contactNum, province, city, barangay,
+            studentId, birthdate, contactNum, photoUrl, province, city, barangay,
             mothersName, mothersTitle, fathersName, fathersTitle, guardiansName, guardiansTitle
         );
     }

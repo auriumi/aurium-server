@@ -37,6 +37,8 @@ public class Student
             throw new ArgumentException("A valid personal email is required");
         if (graduationYear < 2020)
             throw new ArgumentException("A valid graduation year is required");
+        if (studentNumber <= 0)
+            throw new ArgumentException("A valid student number is required");
 
 
         return new Student
