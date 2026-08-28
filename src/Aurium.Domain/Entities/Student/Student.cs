@@ -6,11 +6,20 @@ public class Student
 {
     public int Id { get; private set; }
     public int StudentNumber { get; private set; }
+
     public string FirstName { get; private set; } = string.Empty;
     public string? MiddleName { get; private set; }
     public string LastName { get; private set; } = string.Empty;
+    public string? Nickname { get; private set; }
+    public string? Suffix { get; private set; }
     public string PersonalEmail { get; private set; } = string.Empty;
     public string? SchoolEmail { get; private set; }
+
+    public string Department { get; private set; } = string.Empty;
+    public string Course { get; private set; } = string.Empty;
+    public string? Major { get; private set; }
+    public string? ThesisTitle { get; private set; }
+
     public int GraduationYear { get; private set; }
     public GraduationTerm GraduationTerm { get; private set; }
     public DateTime CreatedAt { get; private set; }
